@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header class="header-jogo">
+        <div class="logo-jogo">
+            <h2>Um Jogo para a Keisy!</h2>
+        <p class="subtitulo-jogo">Descubra algo especial sobre ela...</p>
+    </div>
+    <nav class="menu-jogo">
+        <ul>
+            <li><a href="Untitled-1.html">Sobre Ti</a></li>
+            <li><a href="paraTi.html">Para Ti</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="para-ti" class="secao-jogo">
+    <h2>Um Jogo Especial para Keisy!</h2>
+    <div id="jogo-container" class="oculto">
+        <div id="pergunta-container">
+            <p id="pergunta"></p>
+        </div>
+        <div id="respostas-container">
+            <button class="resposta-btn" data-index="0"></button>
+            <button class="resposta-btn" data-index="1"></button>
+            <button class="resposta-btn" data-index="2"></button>
+            <button class="resposta-btn" data-index="3"></button>
+        </div>
+        <div id="feedback-container" class="oculto">
+            <p id="feedback-mensagem"></p>
+            <button id="proxima-pergunta-btn">Próxima Pergunta</button>
+        </div>
+        <div id="resultado-final" class="oculto">
+            <h2>Parabéns, Keisy!</h2>
+            <p id="mensagem-resultado"></p>
+        </div>
+    </div>
+    <button id="iniciar-jogo-btn">Iniciar Jogo!</button>
+</section>
+</body>
+
+<style>
+    .header-jogo {
+    background-color: #ffebee; /* Um rosa bem clarinho e suave */
+    color: #d81b60; /* Um rosa mais vibrante para o texto */
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f48fb1; /* Uma borda suave abaixo do header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.logo-jogo h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-jogo p {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #f48fb1;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu-jogo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-jogo li {
+    margin-right: 60px;
+    gap: 20px;
+}
+.menu-jogo li:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-jogo li:first-child {
+    margin-left: 0;
+}
+
+.menu-jogo a {
+    text-decoration: none;
+    color: #d81b60;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-jogo a:hover {
+    color: #c2185b; /* Um tom um pouco mais escuro ao passar o mouse */
+}
+
+/* Estilos adicionais para o body da página do jogo (opcional) */
+body.pagina-jogo {
+    font-family: 'Quicksand', sans-serif; /* Uma fonte divertida e moderna */
+    background-color: #fce4ec; /* Outro tom de rosa suave */
+    margin: 0;
+    padding-top: 70px; /* Espaço para o header fixo se você optar por isso */
+}
+
+/* Se você quiser fixar o header no topo */
+.header-jogo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que o header fique acima de outros elementos */
+}
+
+.container-jogo {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+    /* Adicione estes estilos ao seu style.css */
+    .secao-jogo {
+        text-align: center;
+        padding: 30px;
+        margin-top: 200px;
+    }
+
+    .secao-jogo h2 {
+        color: #e91e63; /* Um rosa mais intenso */
+        margin-bottom: 20px;
+    }
+
+    #jogo-container {
+        background-color: #fdecea; /* Um rosa bem clarinho */
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+    }
+
+    #pergunta-container p {
+        font-size: 1.2em;
+        color: #880e4f; /* Um tom de rosa mais escuro */
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    #respostas-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .resposta-btn {
+        background-color: #f48fb1; /* Um rosa mais suave */
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .resposta-btn:hover {
+        background-color: #e91e63;
+        transform: scale(1.02);
+    }
+
+    .resposta-btn.correta {
+        background-color: #4caf50; /* Verde para resposta correta */
+    }
+
+    .resposta-btn.incorreta {
+        background-color: #f44336; /* Vermelho para resposta incorreta */
+    }
+
+    #feedback-container {
+        margin-top: 20px;
+        font-size: 1.1em;
+        color: #880e4f;
+        font-weight: bold;
+    }
+
+    #proxima-pergunta-btn {
+        background-color: #e91e63;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 15px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    #proxima-pergunta-btn:hover {
+        background-color: #c2185b;
+    }
+
+    #resultado-final h2 {
+        color: #e91e63;
+        margin-bottom: 15px;
+    }
+
+    #resultado-final p {
+        font-size: 1.2em;
+        color: #880e4f;
+        font-weight: bold;
+    }
+
+    #iniciar-jogo-btn {
+        background-color: #f48fb1;
+        color: white;
+        border: none;
+        padding: 18px 35px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        margin-top: 20px;
+    }
+
+    #iniciar-jogo-btn:hover {
+        background-color: #e91e63;
+        transform: scale(1.05);
+    }
+
+    .oculto {
+        display: none;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const oculto = document.querySelector('.oculto');
+        const iniciarJogoBtn = document.getElementById('iniciar-jogo-btn');
+        const jogoContainer = document.getElementById('jogo-container');
+        const perguntaContainer = document.getElementById('pergunta');
+        const respostasContainer = document.getElementById('respostas-container');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackMensagem = document.getElementById('feedback-mensagem');
+        const proximaPerguntaBtn = document.getElementById('proxima-pergunta-btn');
+        const resultadoFinal = document.getElementById('resultado-final');
+        const mensagemResultado = document.getElementById('mensagem-resultado');
+        const respostaBotoes = document.querySelectorAll('.resposta-btn');
+
+        let perguntas = [
+            {
+                pergunta: "Qual é a minha cor favorita?",
+                respostas: ["Azul", "Rosa", "Undefined", "Amarelo"],
+                respostaCorreta: 2 // Índice da resposta correta (Rosa)
+            },
+            {
+                pergunta: "Qual é o meu hobby preferido?",
+                respostas: ["Ler", "Cozinhar", "Assistir filmes", "Te apreciar :)"],
+                respostaCorreta: 3 // Índice da resposta correta (Assistir filmes)
+            },
+            {
+                pergunta: "Qual tipo de música eu mais gosto?",
+                respostas: ["Pop", "Rock", "Classico", "MPB"],
+                respostaCorreta: 2 // Índice da resposta correta (Pop)
+            },
+            // Adicione mais perguntas sobre você aqui!
+        ];
+
+        let perguntaAtualIndex = 0;
+        let pontuacao = 0;
+
+        function iniciarJogo() {
+            iniciarJogoBtn.classList.add('oculto');
+            jogoContainer.classList.remove('oculto');
+            exibirProximaPergunta();
+        }
+
+        function exibirProximaPergunta() {
+            resetRespostas();
+            feedbackContainer.classList.add('oculto');
+            proximaPerguntaBtn.classList.add('oculto');
+
+            if (perguntaAtualIndex < perguntas.length) {
+                const perguntaAtual = perguntas[perguntaAtualIndex];
+                perguntaContainer.textContent = perguntaAtual.pergunta;
+
+                perguntaAtual.respostas.forEach((resposta, index) => {
+                    respostaBotoes[index].textContent = resposta;
+                    respostaBotoes[index].dataset.index = index;
+                    respostaBotoes[index].removeEventListener('click', verificarResposta); // Evita múltiplos listeners
+                    respostaBotoes[index].addEventListener('click', verificarResposta);
+                });
+            } else {
+                exibirResultadoFinal();
+            }
+        }
+
+        function verificarResposta(evento) {
+            const botaoSelecionado = evento.target;
+            const respostaSelecionadaIndex = parseInt(botaoSelecionado.dataset.index);
+            const perguntaAtual = perguntas[perguntaAtualIndex];
+            const respostaCorretaIndex = perguntaAtual.respostaCorreta;
+
+            if (respostaSelecionadaIndex === respostaCorretaIndex) {
+                botaoSelecionado.classList.add('correta');
+                feedbackMensagem.textContent = "Você acertou! 😊";
+                pontuacao++;
+            } else {
+                botaoSelecionado.classList.add('incorreta');
+                respostaBotoes[respostaCorretaIndex].classList.add('correta');
+                feedbackMensagem.textContent = `Que pena! A resposta correta era: ${perguntaAtual.respostas[respostaCorretaIndex]}. 😉`;
+            }
+
+            feedbackContainer.classList.remove('oculto');
+            proximaPerguntaBtn.classList.remove('oculto');
+            respostaBotoes.forEach(btn => btn.removeEventListener('click', verificarResposta)); // Desativa os botões após a resposta
+        }
+
+        function resetRespostas() {
+            respostaBotoes.forEach(btn => {
+                btn.classList.remove('correta');
+                btn.classList.remove('incorreta');
+            });
+        }
+
+        function exibirResultadoFinal() {
+            jogoContainer.classList.add('oculto');
+            resultadoFinal.classList.remove('oculto');
+            mensagemResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas! 🎉`;
+            // Aqui você pode adicionar uma mensagem especial para ela!
+            oculto.classList.remove('oculto');
+        }
+
+        proximaPerguntaBtn.addEventListener('click', () => {
+            perguntaAtualIndex++;
+            exibirProximaPergunta();
+        });
+
+        iniciarJogoBtn.addEventListener('click', iniciarJogo);
+    });
+</script>

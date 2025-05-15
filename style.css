@@ -1,0 +1,212 @@
+body {
+    font-family: 'Poppins', sans-serif; /* Uma fonte moderna e charmosa */
+    background-color: #f4effe; /* Um tom lavanda suave */
+    color: #4a4a4a;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container-alternativo {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.247);
+    padding: 50px;
+    text-align: center;
+    width: 85%;
+    max-width: 650px;
+    margin-top: 70px;
+}
+
+header h1 {
+    color: #9c27b0; /* Um roxo elegante */
+    margin-bottom: 25px;
+    font-size: 2.8em;
+    font-weight: 600;
+}
+
+main section {
+    margin-bottom: 40px;
+}
+
+#mensagem-inicial p {
+    font-size: 1.3em;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+#botao-poema {
+    background-color: #9c27b0;
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#botao-poema:hover {
+    background-color: #7b1fa2;
+    transform: scale(1.05);
+}
+
+#poema-amor h2, #lista-qualidades h2, #mensagem-final h2 {
+    color: #9c27b0;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.poema p {
+    font-size: 1.15em;
+    line-height: 1.8;
+    white-space: pre-line; /* Mantém a formatação do poema */
+    margin-top: 15px;
+}
+
+#lista-qualidades ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#lista-qualidades li {
+    background-color: #ede7f6; /* Um lilás bem claro */
+    color: #5e35b1;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 1.1em;
+}
+
+#texto-final {
+    font-size: 1.2em;
+    line-height: 1.7;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+footer {
+    margin-top: 40px;
+    color: #777;
+    font-size: 0.95em;
+}
+
+.oculto {
+    display: none;
+}
+
+/* Animações */
+@keyframes surgir-suave {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mostrar {
+    display: block !important;
+    animation: surgir-suave 0.6s ease-out;
+}
+
+#lista-qualidades.mostrar ul li {
+    animation: surgir-item 0.4s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+@keyframes surgir-item {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+#lista-qualidades.mostrar ul li:nth-child(1) { animation-delay: 0.2s; }
+#lista-qualidades.mostrar ul li:nth-child(2) { animation-delay: 0.4s; }
+#lista-qualidades.mostrar ul li:nth-child(3) { animation-delay: 0.6s; }
+/* Adicione mais para cada item da lista */
+/* Estilos para o header do jogo */
+.header-jogo {
+    background-color: #ffebee; /* Um rosa bem clarinho e suave */
+    color: #d81b60; /* Um rosa mais vibrante para o texto */
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f48fb1; /* Uma borda suave abaixo do header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.logo-jogo h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-jogo p {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #f48fb1;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu-jogo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-jogo li {
+    margin-right: 60px;
+    gap: 20px;
+}
+.menu-jogo li:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-jogo li:first-child {
+    margin-left: 0;
+}
+
+.menu-jogo a {
+    text-decoration: none;
+    color: #d81b60;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-jogo a:hover {
+    color: #c2185b; /* Um tom um pouco mais escuro ao passar o mouse */
+}
+
+/* Estilos adicionais para o body da página do jogo (opcional) */
+body.pagina-jogo {
+    font-family: 'Quicksand', sans-serif; /* Uma fonte divertida e moderna */
+    background-color: #fce4ec; /* Outro tom de rosa suave */
+    margin: 0;
+    padding-top: 70px; /* Espaço para o header fixo se você optar por isso */
+}
+
+/* Se você quiser fixar o header no topo */
+.header-jogo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que o header fique acima de outros elementos */
+}
+
+.container-jogo {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
